@@ -300,7 +300,8 @@
             <h3 class="text-xl font-bold text-textmain mb-2">Login Admin</h3>
             <p class="text-sm text-textlight mb-5">Masukkan email dan password admin untuk mengakses panel manajemen.</p>
             <input type="email" id="adminEmail" value="kadekduwiaditiya@gmail.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Email Admin" autocomplete="username">
-            <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Password" autocomplete="current-password">
+            <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Password" autocomplete="current-password">
+            <button type="button" id="btnResetPassword" class="text-xs text-primary hover:underline mb-4">Lupa password? Kirim reset ke email</button>
             <p id="loginError" class="text-red-500 text-xs hidden mb-4">Password salah.</p>
             <div class="flex justify-end gap-2">
                 <button id="btnCancelLogin" class="px-4 py-2 text-sm font-semibold text-gray-500 hover:text-gray-700 smooth-transition cursor-pointer">Batal</button>
@@ -378,7 +379,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const salesList = [
@@ -934,19 +935,31 @@
             });
             getEl('btnCancelLogin')?.addEventListener('click', () => closeModal('admin-login-modal', 'admin-login-inner'));
             
+            getEl('btnResetPassword')?.addEventListener('click', async () => {
+                const email = getEl('adminEmail')?.value.trim().toLowerCase();
+                const err = getEl('loginError');
+                if (!auth) {
+                    if (err) { err.textContent = 'Firebase belum terhubung. Refresh halaman dulu.'; err.classList.remove('hidden'); }
+                    return;
+                }
+                if (email !== ADMIN_EMAIL) {
+                    if (err) { err.textContent = 'Masukkan email admin: ' + ADMIN_EMAIL; err.classList.remove('hidden'); }
+                    return;
+                }
+                try {
+                    await sendPasswordResetEmail(auth, email);
+                    if (err) { err.textContent = 'Email reset password sudah dikirim ke ' + email + '. Cek Inbox/Spam.'; err.classList.remove('hidden'); }
+                } catch (e) {
+                    console.error('Reset password gagal:', e);
+                    if (err) { err.textContent = `Reset password gagal (${e?.code || 'unknown-error'}).`; err.classList.remove('hidden'); }
+                }
+            });
+
             getEl('btnLogin')?.addEventListener('click', async () => {
                 const email = getEl('adminEmail')?.value.trim().toLowerCase();
                 const pwd = getEl('adminPassword')?.value || '';
                 const err = getEl('loginError');
                 const btn = getEl('btnLogin');
-
-                if (email !== ADMIN_EMAIL) {
-                    if(err) {
-                        err.textContent = 'Email admin tidak sesuai.';
-                        err.classList.remove('hidden');
-                    }
-                    return;
-                }
 
                 if (!auth) {
                     if(err) {
@@ -960,6 +973,10 @@
                     if(btn) { btn.disabled = true; btn.innerText = 'Memeriksa...'; }
                     await signInWithEmailAndPassword(auth, email, pwd);
                     currentUser = auth.currentUser;
+                    if (!currentUser || (currentUser.email || '').toLowerCase() !== ADMIN_EMAIL) {
+                        await signOut(auth);
+                        throw { code: 'auth/admin-email-mismatch' };
+                    }
                     isAdminMode = true;
                     if(err) {
                         err.textContent = '';
@@ -987,13 +1004,17 @@
                     if(err) {
                         const code = loginError?.code || '';
                         const messages = {
-                            'auth/invalid-credential': 'Email atau password Firebase salah. Pastikan akun Email/Password sudah dibuat di Firebase Authentication → Users.',
-                            'auth/wrong-password': 'Password Firebase salah. Buat/reset password user ini di Firebase Authentication → Users.',
-                            'auth/user-not-found': 'User Firebase tidak ditemukan. Pastikan email ini sudah dibuat di Authentication → Users.',
-                            'auth/invalid-email': 'Format email admin tidak valid.',
-                            'auth/user-disabled': 'Akun admin Firebase sedang dinonaktifkan.',
-                            'auth/too-many-requests': 'Terlalu banyak percobaan login. Tunggu beberapa saat lalu coba lagi.',
-                            'auth/network-request-failed': 'Koneksi ke Firebase gagal. Periksa internet lalu coba lagi.'
+                            'auth/invalid-credential': 'Firebase menolak email/password. Cek akun di Authentication → Users dan pastikan provider Email/Password aktif.',
+                            'auth/wrong-password': 'Password Firebase salah untuk akun ini.',
+                            'auth/user-not-found': 'Email ini belum terdaftar di Firebase Authentication.',
+                            'auth/invalid-email': 'Format email tidak valid.',
+                            'auth/user-disabled': 'Akun Firebase ini dinonaktifkan.',
+                            'auth/too-many-requests': 'Terlalu banyak percobaan. Tunggu beberapa menit lalu coba lagi.',
+                            'auth/network-request-failed': 'Koneksi ke Firebase gagal. Cek internet.',
+                            'auth/operation-not-allowed': 'Provider Email/Password belum aktif di Firebase Authentication.',
+                            'auth/invalid-api-key': 'API key Firebase tidak valid.',
+                            'auth/app-not-authorized': 'Domain website belum diizinkan di Firebase Authentication → Settings → Authorized domains.',
+                            'auth/admin-email-mismatch': 'Akun Firebase berhasil login, tetapi emailnya bukan email admin yang diizinkan.'
                         };
                         err.textContent = messages[code] || `Login Firebase gagal (${code || 'unknown-error'}).`;
                         err.classList.remove('hidden');
@@ -1133,7 +1154,7 @@
             const setupCloudStorage = async () => {
                 try {
                     const firebaseConfig = {
-                        apiKey: "AIzaSyBsp4ziiopUpS9rfJf00YfOD940h1-QlG1w",
+                        apiKey: "AIzaSyBsp4ziiopUpS9rJfOOYfOD940h1-QlG1w",
                         authDomain: "badilan-pricelist.firebaseapp.com",
                         projectId: "badilan-pricelist",
                         storageBucket: "badilan-pricelist.firebasestorage.app",
