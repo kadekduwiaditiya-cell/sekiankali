@@ -382,9 +382,38 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const salesList = [
-            "I Gede Widiarta",
-        ];
+        // Direktori promotor.
+        // Isi nomor WA masing-masing promotor sebelum dibagikan ke customer.
+        const SALES_DIRECTORY = {
+            WIDI:   { name: "I Gede Widiarta", phone: "6281237223809" },
+            DIKA:   { name: "Komang Dika Febriana", phone: "6285775621902" },
+            RISKY:  { name: "Putu Risky Mahayana Putra", phone: "6287765170210" },
+            DELIA:  { name: "Ketut Delia Oktaviani", phone: "6281999117246" },
+            SASTRA: { name: "Ketut Sastradwi Payana", phone: "6285858101617" },
+            RAHAYU: { name: "Sri Rahayu", phone: "6285337063967" },
+            ALIT:   { name: "I Gusti Ngurah Alit Triangga", phone: "6285792064529" },
+            NIA:    { name: "Ni Putu Nia Yulianita", phone: "6281548663922" },
+            EKA:    { name: "Luh Eka Suwantari", phone: "6287843296234" }
+        };
+
+        const SALES_STORAGE_KEY = 'badilan_sales_ref';
+        const getSalesRefFromUrl = () => {
+            const ref = new URLSearchParams(window.location.search).get('ref');
+            return ref ? ref.trim().toUpperCase() : '';
+        };
+        const getActiveSalesRef = () => {
+            const urlRef = getSalesRefFromUrl();
+            if (urlRef && SALES_DIRECTORY[urlRef]) {
+                sessionStorage.setItem(SALES_STORAGE_KEY, urlRef);
+                return urlRef;
+            }
+            return sessionStorage.getItem(SALES_STORAGE_KEY) || '';
+        };
+        const getActiveSales = () => {
+            const ref = getActiveSalesRef();
+            return ref && SALES_DIRECTORY[ref] ? { ref, ...SALES_DIRECTORY[ref] } : null;
+        };
+        const salesList = Object.values(SALES_DIRECTORY).map(s => s.name);
 
         // System Constants
         let products = [];
@@ -415,19 +444,40 @@
             }, 1400);
         };
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+        console.info('Sales referral aktif:', getActiveSales() || 'Tidak ada ref');
 
         // UI Interactions for Sales Modal
         let pendingWaMessage = "";
+        const normalizeWaNumber = (phone) => (phone || '').replace(/\D/g, '');
+
+        const sendToSalesWhatsapp = (sales, message) => {
+            if (!sales || !sales.phone) {
+                alert(`Nomor WhatsApp ${sales?.name || 'promotor'} belum diatur. Isi nomor WA promotor di bagian SALES_DIRECTORY pada coding.`);
+                return;
+            }
+            const phone = normalizeWaNumber(sales.phone);
+            const finalMsg = `${message} (Dilayani oleh Sales: *${sales.name}*)`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(finalMsg)}`, '_blank', 'noopener');
+        };
+
         window.openSalesModal = (message) => {
             pendingWaMessage = message;
+            const activeSales = getActiveSales();
+
+            // Jika customer masuk melalui link promotor, jangan tampilkan pilihan sales.
+            // Langsung arahkan ke promotor pemilik link agar attribution tidak tertukar.
+            if (activeSales) {
+                sendToSalesWhatsapp(activeSales, pendingWaMessage);
+                return;
+            }
+
             const modal = getEl('sales-modal');
             const inner = getEl('sales-modal-inner');
             const listContainer = getEl('sales-list');
-            
             if(!modal || !inner || !listContainer) return;
-            
+
             listContainer.innerHTML = '';
-            salesList.forEach((salesName) => {
+            Object.entries(SALES_DIRECTORY).forEach(([ref, sales]) => {
                 const btn = document.createElement('button');
                 btn.className = "w-full text-left px-4 py-3 rounded-xl border border-gray-100 hover:border-primary hover:bg-green-50/50 flex justify-between items-center smooth-transition group shadow-sm cursor-pointer";
                 btn.innerHTML = `
@@ -435,13 +485,16 @@
                         <div class="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs group-hover:bg-primary group-hover:text-white transition-colors">
                             <i class="fa-solid fa-user"></i>
                         </div>
-                        <span class="font-semibold text-textmain text-sm sm:text-base">${salesName}</span>
+                        <div>
+                            <span class="font-semibold text-textmain text-sm sm:text-base">${sales.name}</span>
+                            <span class="block text-[10px] text-gray-400">Kode: ${ref}</span>
+                        </div>
                     </div>
                     <span class="text-xs bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-full group-hover:bg-green-600 group-hover:text-white transition-colors">Chat <i class="fa-brands fa-whatsapp ml-1"></i></span>
                 `;
                 btn.onclick = () => {
-                    const finalMsg = `${pendingWaMessage} (Dilayani oleh Sales: *${salesName}*)`;
-                    window.open(`https://wa.me/6288987460416?text=${encodeURIComponent(finalMsg)}`, '_blank');
+                    sessionStorage.setItem(SALES_STORAGE_KEY, ref);
+                    sendToSalesWhatsapp({ ref, ...sales }, pendingWaMessage);
                     window.closeSalesModal();
                 };
                 listContainer.appendChild(btn);
