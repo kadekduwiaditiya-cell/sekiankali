@@ -409,6 +409,19 @@
 
         // Helper Functions
         const getEl = (id) => document.getElementById(id);
+
+        // Realtime sync indicator: informational only, never reloads the page.
+        const flashRealtimeSync = () => {
+            const status = getEl('cloudStatus');
+            if (!status) return;
+            const original = status.innerHTML;
+            status.innerHTML = '<i class="fa-solid fa-cloud-arrow-down mr-1"></i> Data diperbarui';
+            status.classList.remove('hidden');
+            clearTimeout(window.__syncFlashTimer);
+            window.__syncFlashTimer = setTimeout(() => {
+                status.innerHTML = original;
+            }, 1400);
+        };
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
         // UI Interactions for Sales Modal
@@ -1182,33 +1195,46 @@
                             console.info('Firebase Cloud Sync aktif:', PRODUCTS_PATH.join('/'));
                             
                             onSnapshot(collRef, (snapshot) => {
-                                if (snapshot.empty) {
-                                    // Firestore kosong. Tampilkan data awal hanya sebagai preview.
-                                    // Data belum dianggap tersimpan sampai admin melakukan seed ke Firestore.
-                                    products = generateInitialData();
-                                    setupBrandFilters();
-                                    applyFilters();
-                                    if (isAdminMode) renderAdminTable();
-                                } else {
-                                    window.hasSeededFirebaseV8 = true;
-                                    products = [];
-                                    snapshot.forEach(doc => {
-                                        products.push({ id: doc.id, ...doc.data() });
-                                    });
-                                    products.sort((a,b) => (a.createdAt || 0) - (b.createdAt || 0)); // Sort old to new to keep original order
-                                    
-                                    setupBrandFilters();
-                                    applyFilters();
-                                    if (isAdminMode) renderAdminTable();
-                                }
-                            }, (error) => {
-                                console.error("Cloud DB Listen Error:", error);
-                                isCloudConnected = false;
-                                products = generateInitialData();
-                                setupBrandFilters();
-                                applyFilters();
-                                if (isAdminMode) renderAdminTable();
-                            });
+    // First connection: seed only when Firestore is genuinely empty.
+    if (snapshot.empty && !window.hasSeededFirebaseV8) {
+        window.hasSeededFirebaseV8 = true;
+        const initialProducts = generateInitialData();
+        Promise.all(initialProducts.map((p) => setDoc(doc(collRef, p.id), p)))
+            .catch((error) => {
+                console.error("Gagal seed Firestore:", error);
+                showCloudError(error);
+            });
+        return;
+    }
+
+    if (!snapshot.empty) {
+        window.hasSeededFirebaseV8 = true;
+
+        // Update the data model in memory.
+        const nextProducts = [];
+        snapshot.forEach((snapDoc) => {
+            nextProducts.push({ id: snapDoc.id, ...snapDoc.data() });
+        });
+        nextProducts.sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+
+        products = nextProducts;
+        flashRealtimeSync();
+
+        // IMPORTANT:
+        // Do not reload the page. Re-render only the affected UI.
+        // Keep the current scroll position, open modals, search text,
+        // filters, and customer state intact.
+        setupBrandFilters();
+        applyFilters();
+
+        if (isAdminMode) {
+            renderAdminTable();
+        }
+    }
+}, (error) => {
+    console.error("Cloud DB Listen Error:", error);
+    showCloudError(error);
+});
                         } else {
                             enableFallbackMode();
                         }
