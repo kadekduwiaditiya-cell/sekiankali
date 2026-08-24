@@ -298,8 +298,9 @@
     <div id="admin-login-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
         <div id="admin-login-inner" class="bg-white p-6 md:p-8 rounded-2xl w-full max-w-sm shadow-xl transform scale-95 transition-transform duration-300">
             <h3 class="text-xl font-bold text-textmain mb-2">Login Admin</h3>
-            <p class="text-sm text-textlight mb-5">Masukkan Password untuk mengakses panel manajemen.</p>
-            <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Password">
+            <p class="text-sm text-textlight mb-5">Masukkan email dan password admin untuk mengakses panel manajemen.</p>
+            <input type="email" id="adminEmail" value="admin@badilanpricelist.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Email Admin" autocomplete="username">
+            <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Password" autocomplete="current-password">
             <p id="loginError" class="text-red-500 text-xs hidden mb-4">Password salah.</p>
             <div class="flex justify-end gap-2">
                 <button id="btnCancelLogin" class="px-4 py-2 text-sm font-semibold text-gray-500 hover:text-gray-700 smooth-transition cursor-pointer">Batal</button>
@@ -377,7 +378,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const salesList = [
@@ -399,7 +400,9 @@
         let isCloudConnected = false;
         
         let app, db, auth, currentUser;
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'badilan-grosir-db-1';
+        const appId = 'badilan-pricelist';
+        const ADMIN_EMAIL = 'admin@badilanpricelist.com';
+        let cloudCollectionRef = null;
 
         // Helper Functions
         const getEl = (id) => document.getElementById(id);
@@ -930,28 +933,79 @@
             });
             getEl('btnCancelLogin')?.addEventListener('click', () => closeModal('admin-login-modal', 'admin-login-inner'));
             
-            getEl('btnLogin')?.addEventListener('click', () => {
-                const pwd = getEl('adminPassword')?.value;
+            getEl('btnLogin')?.addEventListener('click', async () => {
+                const email = getEl('adminEmail')?.value.trim().toLowerCase();
+                const pwd = getEl('adminPassword')?.value || '';
                 const err = getEl('loginError');
-                if (pwd === 'Qwerty12') {
+                const btn = getEl('btnLogin');
+
+                if (email !== ADMIN_EMAIL) {
+                    if(err) {
+                        err.textContent = 'Email admin tidak sesuai.';
+                        err.classList.remove('hidden');
+                    }
+                    return;
+                }
+
+                if (!auth) {
+                    if(err) {
+                        err.textContent = 'Firebase belum terhubung. Coba refresh halaman.';
+                        err.classList.remove('hidden');
+                    }
+                    return;
+                }
+
+                try {
+                    if(btn) { btn.disabled = true; btn.innerText = 'Memeriksa...'; }
+                    await signInWithEmailAndPassword(auth, email, pwd);
+                    currentUser = auth.currentUser;
                     isAdminMode = true;
-                    if(err) err.classList.add('hidden');
+                    if(err) {
+                        err.textContent = 'Password salah.';
+                        err.classList.add('hidden');
+                    }
                     closeModal('admin-login-modal', 'admin-login-inner');
                     getEl('store-view')?.classList.add('hidden');
                     getEl('admin-panel')?.classList.remove('hidden');
                     if (isCloudConnected) getEl('cloudStatus')?.classList.remove('hidden');
                     renderAdminTable();
-                    if(getEl('adminPassword')) getEl('adminPassword').value = '';
-                } else {
-                    if(err) err.classList.remove('hidden');
+                    if (getEl('adminPassword')) getEl('adminPassword').value = '';
+
+                    // Jika database masih kosong, akun admin menjadi satu-satunya pihak yang
+                    // berhak melakukan seed data awal ke Firestore.
+                    if (cloudCollectionRef) {
+                        const initialProducts = generateInitialData();
+                        const { getDocs } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+                        const snap = await getDocs(cloudCollectionRef);
+                        if (snap.empty) {
+                            await Promise.all(initialProducts.map(p => setDoc(doc(cloudCollectionRef, p.id), p)));
+                        }
+                    }
+                } catch (loginError) {
+                    console.error('Admin login gagal:', loginError);
+                    if(err) {
+                        err.textContent = 'Email atau password admin salah.';
+                        err.classList.remove('hidden');
+                    }
+                } finally {
+                    if(btn) { btn.disabled = false; btn.innerText = 'Masuk'; }
                 }
             });
 
-            getEl('adminPassword')?.addEventListener('keyup', (e) => {
+            const submitAdminLogin = (e) => {
                 if(e.key === 'Enter') getEl('btnLogin')?.click();
-            });
+            };
+            getEl('adminEmail')?.addEventListener('keyup', submitAdminLogin);
+            getEl('adminPassword')?.addEventListener('keyup', submitAdminLogin);
 
-            getEl('btnLogoutAdmin')?.addEventListener('click', () => {
+            getEl('btnLogoutAdmin')?.addEventListener('click', async () => {
+                try {
+                    await signOut(auth);
+                    await signInAnonymously(auth);
+                    currentUser = auth.currentUser;
+                } catch(e) {
+                    console.error('Gagal logout admin:', e);
+                }
                 isAdminMode = false;
                 getEl('admin-panel')?.classList.add('hidden');
                 getEl('store-view')?.classList.remove('hidden');
@@ -1067,7 +1121,15 @@
             // Setup Cloud Storage Data
             const setupCloudStorage = async () => {
                 try {
-                    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+                    const firebaseConfig = {
+                        apiKey: "AIzaSyBsp4ziiopUpS9rfJf00YfOD940h1-QlG1w",
+                        authDomain: "badilan-pricelist.firebaseapp.com",
+                        projectId: "badilan-pricelist",
+                        storageBucket: "badilan-pricelist.firebasestorage.app",
+                        messagingSenderId: "1003075371863",
+                        appId: "1:1003075371863:web:fa770c7d1df761fac3f412",
+                        measurementId: "G-RMVT2HZLC5"
+                    };
                     if(firebaseConfig) {
                         app = initializeApp(firebaseConfig);
                         db = getFirestore(app);
@@ -1084,15 +1146,17 @@
                         if(currentUser) {
                             isCloudConnected = true;
                             const collRef = collection(db, 'artifacts', appId, 'public', 'data', 'products_v8');
+                            cloudCollectionRef = collRef;
                             
                             onSnapshot(collRef, (snapshot) => {
-                                if (snapshot.empty && !window.hasSeededFirebaseV8) {
-                                    window.hasSeededFirebaseV8 = true;
-                                    const initialProducts = generateInitialData();
-                                    initialProducts.forEach(async (p) => {
-                                        await setDoc(doc(collRef, p.id), p);
-                                    });
-                                } else if (!snapshot.empty) {
+                                if (snapshot.empty) {
+                                    // Customer tetap dapat melihat data awal sebelum admin melakukan seed.
+                                    // Penulisan ke Firestore hanya dilakukan setelah admin login.
+                                    products = generateInitialData();
+                                    setupBrandFilters();
+                                    applyFilters();
+                                    if (isAdminMode) renderAdminTable();
+                                } else {
                                     window.hasSeededFirebaseV8 = true;
                                     products = [];
                                     snapshot.forEach(doc => {
