@@ -401,6 +401,7 @@
         
         let app, db, auth, currentUser;
         const appId = 'badilan-pricelist';
+        const PRODUCTS_COLLECTION = 'products';
         const ADMIN_EMAIL = 'kadekduwiaditiya@gmail.com';
         let cloudCollectionRef = null;
 
@@ -961,7 +962,7 @@
                     currentUser = auth.currentUser;
                     isAdminMode = true;
                     if(err) {
-                        err.textContent = 'Password salah.';
+                        err.textContent = '';
                         err.classList.add('hidden');
                     }
                     closeModal('admin-login-modal', 'admin-login-inner');
@@ -984,7 +985,17 @@
                 } catch (loginError) {
                     console.error('Admin login gagal:', loginError);
                     if(err) {
-                        err.textContent = 'Email atau password admin salah.';
+                        const code = loginError?.code || '';
+                        const messages = {
+                            'auth/invalid-credential': 'Email atau password Firebase salah. Pastikan akun Email/Password sudah dibuat di Firebase Authentication → Users.',
+                            'auth/wrong-password': 'Password Firebase salah. Buat/reset password user ini di Firebase Authentication → Users.',
+                            'auth/user-not-found': 'User Firebase tidak ditemukan. Pastikan email ini sudah dibuat di Authentication → Users.',
+                            'auth/invalid-email': 'Format email admin tidak valid.',
+                            'auth/user-disabled': 'Akun admin Firebase sedang dinonaktifkan.',
+                            'auth/too-many-requests': 'Terlalu banyak percobaan login. Tunggu beberapa saat lalu coba lagi.',
+                            'auth/network-request-failed': 'Koneksi ke Firebase gagal. Periksa internet lalu coba lagi.'
+                        };
+                        err.textContent = messages[code] || `Login Firebase gagal (${code || 'unknown-error'}).`;
                         err.classList.remove('hidden');
                     }
                 } finally {
@@ -1145,7 +1156,7 @@
                         
                         if(currentUser) {
                             isCloudConnected = true;
-                            const collRef = collection(db, 'artifacts', appId, 'public', 'data', 'products_v8');
+                            const collRef = collection(db, PRODUCTS_COLLECTION);
                             cloudCollectionRef = collRef;
                             
                             onSnapshot(collRef, (snapshot) => {
@@ -1170,7 +1181,11 @@
                                 }
                             }, (error) => {
                                 console.error("Cloud DB Listen Error:", error);
-                                enableFallbackMode();
+                                isCloudConnected = false;
+                                products = generateInitialData();
+                                setupBrandFilters();
+                                applyFilters();
+                                if (isAdminMode) renderAdminTable();
                             });
                         } else {
                             enableFallbackMode();
@@ -1179,20 +1194,19 @@
                         enableFallbackMode();
                     }
                 } catch(e) {
-                    console.warn("Could not connect to Cloud DB. Falling back to local storage.", e);
-                    enableFallbackMode();
+                    console.error("Could not connect to Firebase/Firestore.", e);
+                    isCloudConnected = false;
+                    products = generateInitialData();
+                    setupBrandFilters();
+                    applyFilters();
                 }
             };
 
             const enableFallbackMode = () => {
                 isCloudConnected = false;
-                const localData = localStorage.getItem('badilan_products_v8');
-                if (localData) {
-                    products = JSON.parse(localData);
-                } else {
-                    products = generateInitialData();
-                    localStorage.setItem('badilan_products_v8', JSON.stringify(products));
-                }
+                // Jangan gunakan localStorage sebagai sumber data utama.
+                // Jika Firebase gagal, tampilkan data awal hanya sebagai fallback visual.
+                products = generateInitialData();
                 setupBrandFilters();
                 applyFilters();
                 if (isAdminMode) renderAdminTable();
@@ -1232,7 +1246,7 @@
                     modalHTML.remove();
                     if (isCloudConnected && currentUser && db) {
                         try {
-                            await deleteDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'products_v8'), id));
+                            await deleteDoc(doc(collection(db, PRODUCTS_COLLECTION), id));
                         } catch(e) { console.error("Error deleting from cloud", e); }
                     } else {
                         products = products.filter(x => x.id !== id);
@@ -1270,7 +1284,7 @@
 
                 try {
                     if (isCloudConnected && currentUser && db) {
-                        const collRef = collection(db, 'artifacts', appId, 'public', 'data', 'products_v8');
+                        const collRef = collection(db, PRODUCTS_COLLECTION);
                         if (existingId) {
                             newProduct.id = existingId;
                             const idx = products.findIndex(p => p.id === existingId);
