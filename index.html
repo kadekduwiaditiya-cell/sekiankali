@@ -380,7 +380,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const salesList = [
             "I Gede Widiarta",
@@ -402,7 +402,8 @@
         
         let app, db, auth, currentUser;
         const appId = 'badilan-pricelist';
-        const PRODUCTS_COLLECTION = 'products';
+        const PRODUCTS_COLLECTION = 'products_v8';
+        const PRODUCTS_PATH = ['artifacts', appId, 'public', 'data', PRODUCTS_COLLECTION];
         const ADMIN_EMAIL = 'kadekduwiaditiya@gmail.com';
         let cloudCollectionRef = null;
 
@@ -993,7 +994,6 @@
                     // berhak melakukan seed data awal ke Firestore.
                     if (cloudCollectionRef) {
                         const initialProducts = generateInitialData();
-                        const { getDocs } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
                         const snap = await getDocs(cloudCollectionRef);
                         if (snap.empty) {
                             await Promise.all(initialProducts.map(p => setDoc(doc(cloudCollectionRef, p.id), p)));
@@ -1150,11 +1150,11 @@
                 });
             };
 
-            // Setup Cloud Storage Data
+            // Setup Firebase Cloud Sync
             const setupCloudStorage = async () => {
                 try {
                     const firebaseConfig = {
-                        apiKey: "AIzaSyBsp4ziiopUpS9rJfOOYfOD940h1-QlG1w",
+                        apiKey: "AIzaSyBsp4ziiopUpS9rfJf00YfOD940h1-QlG1w",
                         authDomain: "badilan-pricelist.firebaseapp.com",
                         projectId: "badilan-pricelist",
                         storageBucket: "badilan-pricelist.firebasestorage.app",
@@ -1177,13 +1177,14 @@
                         
                         if(currentUser) {
                             isCloudConnected = true;
-                            const collRef = collection(db, PRODUCTS_COLLECTION);
+                            const collRef = collection(db, ...PRODUCTS_PATH);
                             cloudCollectionRef = collRef;
+                            console.info('Firebase Cloud Sync aktif:', PRODUCTS_PATH.join('/'));
                             
                             onSnapshot(collRef, (snapshot) => {
                                 if (snapshot.empty) {
-                                    // Customer tetap dapat melihat data awal sebelum admin melakukan seed.
-                                    // Penulisan ke Firestore hanya dilakukan setelah admin login.
+                                    // Firestore kosong. Tampilkan data awal hanya sebagai preview.
+                                    // Data belum dianggap tersimpan sampai admin melakukan seed ke Firestore.
                                     products = generateInitialData();
                                     setupBrandFilters();
                                     applyFilters();
@@ -1265,16 +1266,15 @@
 
                 getEl('confirmDelBtn').onclick = async () => {
                     modalHTML.remove();
-                    if (isCloudConnected && currentUser && db) {
-                        try {
-                            await deleteDoc(doc(collection(db, PRODUCTS_COLLECTION), id));
-                        } catch(e) { console.error("Error deleting from cloud", e); }
-                    } else {
-                        products = products.filter(x => x.id !== id);
-                        localStorage.setItem('badilan_products_v8', JSON.stringify(products));
-                        setupBrandFilters();
-                        renderAdminTable();
-                        applyFilters();
+                    if (!(isCloudConnected && currentUser && db)) {
+                        alert("Firebase belum terhubung. Data tidak dihapus.");
+                        return;
+                    }
+                    try {
+                        await deleteDoc(doc(collection(db, ...PRODUCTS_PATH), id));
+                    } catch(e) {
+                        console.error("Error deleting from cloud", e);
+                        alert(`Gagal menghapus dari Firebase${e?.code ? ` (${e.code})` : ''}.`);
                     }
                 };
             };
@@ -1304,38 +1304,26 @@
                 const existingId = getEl('adminProductId')?.value;
 
                 try {
-                    if (isCloudConnected && currentUser && db) {
-                        const collRef = collection(db, PRODUCTS_COLLECTION);
-                        if (existingId) {
-                            newProduct.id = existingId;
-                            const idx = products.findIndex(p => p.id === existingId);
-                            if(idx > -1 && !newProduct.image) newProduct.image = products[idx].image || '';
-                            await setDoc(doc(collRef, existingId), newProduct, { merge: true });
-                        } else {
-                            newProduct.id = 'prod_' + Date.now();
-                            await setDoc(doc(collRef, newProduct.id), newProduct);
-                        }
+                    if (!(isCloudConnected && currentUser && db)) {
+                        throw new Error('Firebase belum terhubung');
+                    }
+
+                    const collRef = cloudCollectionRef || collection(db, ...PRODUCTS_PATH);
+                    if (existingId) {
+                        newProduct.id = existingId;
+                        const idx = products.findIndex(p => p.id === existingId);
+                        if(idx > -1 && !newProduct.image) newProduct.image = products[idx].image || '';
+                        await setDoc(doc(collRef, existingId), newProduct, { merge: true });
                     } else {
-                        if (existingId) {
-                            newProduct.id = existingId;
-                            const idx = products.findIndex(p => p.id === existingId);
-                            if(idx > -1) {
-                                if(!newProduct.image) newProduct.image = products[idx].image || '';
-                                products[idx] = newProduct;
-                            }
-                        } else {
-                            newProduct.id = 'prod_' + Date.now();
-                            products.unshift(newProduct);
-                        }
-                        localStorage.setItem('badilan_products_v8', JSON.stringify(products));
-                        setupBrandFilters();
-                        renderAdminTable();
-                        applyFilters();
+                        newProduct.id = 'prod_' + Date.now();
+                        await setDoc(doc(collRef, newProduct.id), newProduct);
                     }
                     closeModal('admin-product-modal', 'admin-product-inner');
                 } catch(err) {
                     console.error("Gagal menyimpan:", err);
-                    alert("Gagal menyimpan data.");
+                    const code = err?.code || '';
+                    const detail = code ? ` (${code})` : '';
+                    alert(`Gagal menyimpan ke Firebase${detail}. Pastikan Rules mengizinkan email admin dan Firebase sedang online.`);
                 } finally {
                     if(btn) btn.innerText = 'Simpan Ke Database';
                 }
