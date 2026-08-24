@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Price List Handphone Terbaru | BADILAN GROSIR</title>
+    <meta name="description" content="Cek price list handphone terbaru dari berbagai brand di Badilan Grosir Kubutambahan. Melayani Cash & Kredit.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#168C4A',
+                        primarydark: '#0B5D32',
+                        accent: '#FFC928',
+                        surface: '#F5F7F6',
+                        textmain: '#1F2937',
+                        textlight: '#6B7280'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        .smooth-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .menu-transition { transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-surface text-textmain antialiased relative min-h-screen flex flex-col pb-16 md:pb-0">
+
+    <nav class="bg-white sticky top-0 z-40 shadow-sm transition-shadow duration-300" id="main-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-white font-bold text-xl">B</div>
+                    <span class="font-extrabold text-xl tracking-tight text-primarydark">BADILAN</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" class="text-textmain font-medium hover:text-primary smooth-transition">Home</a>
+                    <a href="#pricelist" class="text-textmain font-medium hover:text-primary smooth-transition">Price List</a>
+                    <a href="#promo" class="text-textmain font-medium hover:text-primary smooth-transition">Promo</a>
+                    <button onclick="openSalesModal('Halo Badilan Grosir, saya mau bertanya seputar produk.')" class="bg-primary hover:bg-primarydark text-white px-5 py-2 rounded-full font-semibold shadow-sm hover:shadow-md smooth-transition transform hover:-translate-y-0.5 cursor-pointer">Chat WhatsApp</button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-textmain hover:text-primary focus:outline-none smooth-transition p-2 cursor-pointer">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 overflow-hidden menu-transition">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-md">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-textmain hover:text-primary hover:bg-surface smooth-transition">Home</a>
+                <a href="#pricelist" class="block px-3 py-2 rounded-md text-base font-medium text-textmain hover:text-primary hover:bg-surface smooth-transition">Price List</a>
+                <a href="#promo" class="block px-3 py-2 rounded-md text-base font-medium text-textmain hover:text-primary hover:bg-surface smooth-transition">Promo</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="store-view" class="flex-grow">
+        <header class="bg-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-green-50/50 to-transparent pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-20 text-center relative z-10">
+                <p class="text-primary font-bold tracking-widest text-xs sm:text-sm uppercase mb-3 animate-fade-up" style="animation-delay: 0s;">Badilan 3 Kubutambahan</p>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-textmain mb-3 sm:mb-4 leading-tight animate-fade-up" style="animation-delay: 0.1s;">PRICE LIST HANDPHONE<br/><span class="text-primary">TERBARU</span></h1>
+                <p class="text-textlight text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 animate-fade-up" style="animation-delay: 0.2s;">Pusat smartphone original, laptop, sepeda listrik, dan aksesoris terlengkap di Kabupaten Buleleng. Melayani Cash & Kredit.</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 animate-fade-up" style="animation-delay: 0.3s;">
+                    <a href="#pricelist" class="w-full sm:w-auto bg-primary hover:bg-primarydark text-white px-8 py-3.5 rounded-full font-semibold shadow-md hover:shadow-lg smooth-transition transform hover:-translate-y-0.5 text-base sm:text-lg">Lihat Price List</a>
+                    <button onclick="openSalesModal('Halo Badilan Grosir, saya mau bertanya seputar produk.')" class="w-full sm:w-auto bg-white border border-gray-300 hover:border-primary hover:text-primary text-textmain px-8 py-3.5 rounded-full font-semibold shadow-sm hover:shadow-md smooth-transition transform hover:-translate-y-0.5 text-base sm:text-lg flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i> Tanya Admin
+                    </button>
+                </div>
+                <p class="text-[10px] sm:text-xs text-textlight mt-5 sm:mt-6 animate-fade-up" style="animation-delay: 0.4s;">*Harga dapat berubah sewaktu-waktu mengikuti program toko.</p>
+            </div>
+        </header>
+
+        <section class="border-b border-gray-200 bg-white sticky top-16 z-30 shadow-sm transition-shadow duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+                <div class="flex items-center gap-2 overflow-x-auto hide-scroll py-1" id="brand-quick-filters">
+                    <!-- Dynamic brands injected here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="pricelist" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            <div class="bg-white p-3 sm:p-4 rounded-xl shadow-sm hover:shadow-md smooth-transition border border-gray-100 flex flex-col md:flex-row gap-3 sm:gap-4 justify-between items-center mb-6 sm:mb-8">
+                <div class="relative w-full md:w-1/3 md:max-w-md">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-search text-gray-400"></i>
+                    </div>
+                    <input type="text" id="searchInput" class="block w-full pl-10 pr-3 py-2.5 sm:py-2 border border-gray-200 rounded-lg bg-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent smooth-transition" placeholder="Cari tipe HP...">
+                </div>
+                
+                <div class="flex gap-2 w-full md:w-auto">
+                    <select id="filterCategory" class="flex-1 md:flex-none border border-gray-200 text-sm rounded-lg py-2.5 sm:py-2 px-2 sm:px-3 bg-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer smooth-transition">
+                        <option value="All">Kategori</option>
+                        <option value="Smartphone">Smartphone</option>
+                        <option value="Tablet">Tablet</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+                    <select id="sortOrder" class="flex-1 md:flex-none border border-gray-200 text-sm rounded-lg py-2.5 sm:py-2 px-2 sm:px-3 bg-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer smooth-transition">
+                        <option value="terbaru">Terbaru</option>
+                        <option value="termurah">Termurah</option>
+                        <option value="termahal">Termahal</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Cloud Loading Indicator -->
+            <div id="loading-indicator" class="py-12 text-center text-primary font-medium animate-pulse">
+                <i class="fa-solid fa-cloud-arrow-down mb-2 text-3xl"></i>
+                <p>Memuat Data dari Cloud Database...</p>
+            </div>
+
+            <!-- Single Product Container -->
+            <div id="product-container" class="hidden flex-col gap-2.5 sm:gap-3">
+                <!-- Products dynamically rendered -->
+            </div>
+
+            <div id="empty-state" class="hidden py-16 text-center animate-fade-up">
+                <i class="fa-solid fa-box-open text-5xl text-gray-300 mb-4"></i>
+                <h3 class="text-lg font-semibold text-textmain">Produk tidak ditemukan</h3>
+                <p class="text-gray-500">Coba ubah kata kunci atau filter pencarian Anda.</p>
+            </div>
+        </section>
+
+        <section id="promo" class="bg-surface py-12 md:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-extrabold text-textmain mb-2">PROMO & BENEFIT</h2>
+                    <p class="text-textlight">Nikmati kemudahan belanja di Badilan Grosir</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-lg hover:-translate-y-1 smooth-transition">
+                        <div class="w-14 h-14 mx-auto bg-green-100 text-primary rounded-full flex items-center justify-center text-2xl mb-4">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <h3 class="font-bold text-textmain mb-1">Bebas Pilih Cicilan</h3>
+                        <p class="text-sm text-textlight">Tersedia Home Credit, Kredivo, Indodana, FIF, Kreditplus & Akulaku.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-lg hover:-translate-y-1 smooth-transition">
+                        <div class="w-14 h-14 mx-auto bg-yellow-100 text-accent rounded-full flex items-center justify-center text-2xl mb-4">
+                            <i class="fa-solid fa-motorcycle"></i>
+                        </div>
+                        <h3 class="font-bold text-textmain mb-1">Pesan Antar (Delivery)</h3>
+                        <p class="text-sm text-textlight">Pesan dari rumah, barang kami antar dengan aman se-Buleleng.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-lg hover:-translate-y-1 smooth-transition">
+                        <div class="w-14 h-14 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mb-4">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h3 class="font-bold text-textmain mb-1">Produk Terlengkap</h3>
+                        <p class="text-sm text-textlight">Smartphone, Smartwatch, Aksesoris hingga Sepeda Listrik.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-lg hover:-translate-y-1 smooth-transition">
+                        <div class="w-14 h-14 mx-auto bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl mb-4">
+                            <i class="fa-solid fa-shop"></i>
+                        </div>
+                        <h3 class="font-bold text-textmain mb-1">Tersedia Online</h3>
+                        <p class="text-sm text-textlight">Juga tersedia via Tokopedia & Shopee Badilan Grosir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Admin Management Panel -->
+    <div id="admin-panel" class="hidden flex-grow bg-surface pb-12 animate-fade-up">
+        <div class="bg-primarydark py-6 mb-8 shadow-inner relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/10"></div>
+            <div class="max-w-7xl mx-auto px-4 flex justify-between items-center relative z-10">
+                <h2 class="text-xl md:text-2xl font-bold text-white"><i class="fa-solid fa-screwdriver-wrench mr-2"></i> Dashboard Admin (Cloud Sync)</h2>
+                <div class="flex gap-2">
+                    <span id="cloudStatus" class="bg-green-500/20 border border-green-400 text-green-100 px-3 py-2 rounded-lg text-xs font-medium hidden md:flex items-center"><i class="fa-solid fa-cloud-check mr-1"></i> Tersambung Online</span>
+                    <button id="btnLogoutAdmin" class="bg-white/20 hover:bg-white/30 text-white px-3 md:px-4 py-2 rounded-lg font-medium smooth-transition text-xs md:text-sm cursor-pointer">Keluar</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-200">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+                    <h3 class="text-lg font-bold text-textmain">Manajemen Produk Terpusat</h3>
+                    <button id="btnOpenAdminModal" class="bg-primary hover:bg-primarydark text-white px-5 py-2.5 rounded-lg font-semibold shadow-sm smooth-transition transform hover:-translate-y-0.5 w-full md:w-auto cursor-pointer"><i class="fa-solid fa-plus mr-2"></i>Tambah Produk</button>
+                </div>
+                <div class="overflow-x-auto hide-scroll">
+                    <table class="w-full text-left border-collapse min-w-[700px]">
+                        <thead>
+                            <tr class="bg-surface text-textlight text-sm uppercase tracking-wide">
+                                <th class="p-4 rounded-tl-lg font-semibold">Produk, Brand & Kategori</th>
+                                <th class="p-4 font-semibold">Harga & Garansi</th>
+                                <th class="p-4 font-semibold">Stok</th>
+                                <th class="p-4 rounded-tr-lg font-semibold text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody" class="text-sm">
+                            <!-- Admin rows inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white font-bold text-sm">B</div>
+                        <span class="font-extrabold text-lg tracking-tight text-textmain">BADILAN GROSIR</span>
+                    </div>
+                    <p class="text-textlight text-sm mb-4 leading-relaxed">Pusat penjualan smartphone, laptop, sepeda listrik, dan aksesoris terlengkap di Kabupaten Buleleng, Bali. Melayani pembelian Cash & Kredit.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-textmain mb-4">Informasi Toko</h4>
+                    <ul class="text-sm text-textlight space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 w-4 text-gray-400"></i> 
+                            <a href="https://maps.app.goo.gl/6M4hNgBt7yAUUWZQ9" target="_blank" class="hover:text-primary transition-colors cursor-pointer" title="Buka di Google Maps">
+                                Jl. Raya Air Sanih, Kubutambahan, Kec. Kubutambahan, Kab. Buleleng, Bali 81171
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3"><i class="fa-brands fa-whatsapp w-4 text-green-500 text-lg"></i> <span>0889-8746-0416</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-clock mt-1 w-4 text-gray-400"></i> <span>Senin – Minggu: 08.00 – 21.30 WITA</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-textmain mb-4">Toko Online Kami</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-textmain hover:text-green-600 hover:bg-green-50 smooth-transition shadow-sm hover:shadow transform hover:-translate-y-1" title="Tokopedia Badilan"><i class="fa-solid fa-shop text-lg"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-textmain hover:text-orange-500 hover:bg-orange-50 smooth-transition shadow-sm hover:shadow transform hover:-translate-y-1" title="Shopee Badilan"><i class="fa-solid fa-bag-shopping text-lg"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-textmain hover:text-pink-500 hover:bg-pink-50 smooth-transition shadow-sm hover:shadow transform hover:-translate-y-1" title="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-textmain hover:text-black hover:bg-gray-100 smooth-transition shadow-sm hover:shadow transform hover:-translate-y-1" title="TikTok"><i class="fa-brands fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-textlight">
+                <p>&copy; 2026 Badilan Grosir Kubutambahan. All rights reserved.</p>
+                <button id="btnOpenLogin" class="mt-4 md:mt-0 hover:text-primary transition-colors cursor-pointer p-2 font-semibold"><i class="fa-solid fa-lock mr-1 text-gray-400"></i> Admin Panel</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <button onclick="openSalesModal('Halo Badilan Grosir, saya mau bertanya seputar produk.')" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl shadow-[0_4px_14px_0_rgba(34,197,94,0.39)] hover:bg-green-600 smooth-transition hover:scale-110 z-30 transform origin-center cursor-pointer">
+        <i class="fa-brands fa-whatsapp"></i>
+    </button>
+
+    <!-- Sales Selection Modal -->
+    <div id="sales-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div id="sales-modal-inner" class="bg-white rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-300 shadow-2xl p-6 relative">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold"><i class="fa-brands fa-whatsapp"></i></div>
+                    <h3 class="text-lg font-bold text-textmain">Pilih Sales / Admin</h3>
+                </div>
+                <button onclick="closeSalesModal()" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <p class="text-xs text-textlight mb-4">Silakan pilih sales yang melayani Anda agar tercatat untuk transaksi ini:</p>
+            <div id="sales-list" class="flex flex-col gap-2 mb-2">
+                <!-- Sales populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div id="product-modal-inner" class="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-300 shadow-2xl relative">
+            <div class="flex justify-end p-4 absolute top-0 right-0 z-20">
+                <button id="btnCloseModal" class="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center text-gray-600 hover:bg-black/20 hover:text-black transition-colors cursor-pointer"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="flex flex-col md:flex-row" id="modal-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div id="admin-login-inner" class="bg-white p-6 md:p-8 rounded-2xl w-full max-w-sm shadow-xl transform scale-95 transition-transform duration-300">
+            <h3 class="text-xl font-bold text-textmain mb-2">Login Admin</h3>
+            <p class="text-sm text-textlight mb-5">Masukkan Password untuk mengakses panel manajemen.</p>
+            <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Password">
+            <p id="loginError" class="text-red-500 text-xs hidden mb-4">Password salah.</p>
+            <div class="flex justify-end gap-2">
+                <button id="btnCancelLogin" class="px-4 py-2 text-sm font-semibold text-gray-500 hover:text-gray-700 smooth-transition cursor-pointer">Batal</button>
+                <button id="btnLogin" class="px-5 py-2 bg-primary hover:bg-primarydark text-white rounded-lg text-sm font-semibold shadow-sm transform hover:-translate-y-0.5 smooth-transition cursor-pointer">Masuk</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Product Modal -->
+    <div id="admin-product-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 opacity-0 transition-opacity duration-300">
+        <div id="admin-product-inner" class="bg-white p-5 sm:p-6 rounded-2xl w-full max-w-lg max-h-[95vh] overflow-y-auto shadow-xl transform scale-95 transition-transform duration-300">
+            <h3 class="text-lg sm:text-xl font-bold text-textmain mb-4" id="adminModalTitle">Tambah Produk</h3>
+            <form id="adminProductForm">
+                <input type="hidden" id="adminProductId">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-textmain mb-1">Brand</label>
+                        <input type="text" id="adminBrand" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Contoh: Samsung">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-textmain mb-1">Kategori</label>
+                        <select id="adminCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary smooth-transition">
+                            <option value="Smartphone">Smartphone</option>
+                            <option value="Tablet">Tablet</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 sm:mb-4">
+                    <label class="block text-xs font-semibold text-textmain mb-1">Nama Produk / Tipe</label>
+                    <input type="text" id="adminName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Contoh: Galaxy A56 5G">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-textmain mb-1">Varian (RAM/ROM)</label>
+                        <input type="text" id="adminVariant" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Contoh: 8/128 GB">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-textmain mb-1">Garansi (Wajib)</label>
+                        <input type="text" id="adminWarranty" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Contoh: Resmi 1 Tahun">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-textmain mb-1">Harga Normal (Rp)</label>
+                        <input type="number" id="adminPrice" required min="0" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Contoh: 6499000">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-textmain mb-1">Harga Promo (Rp - Kosongkan jika tdk ada)</label>
+                        <input type="number" id="adminPromo" min="0" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="Contoh: 6199000">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-5">
+                    <div>
+                        <label class="block text-xs font-semibold text-textmain mb-1">Status Stok</label>
+                        <select id="adminStock" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary smooth-transition">
+                            <option value="Tersedia">Tersedia</option>
+                            <option value="Terbatas">Terbatas</option>
+                            <option value="Kosong">Kosong</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-textmain mb-1">URL Gambar (Dari Internet)</label>
+                        <input type="text" id="adminImage" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary smooth-transition" placeholder="https://contoh-link-gambar.com/foto.jpg">
+                    </div>
+                </div>
+                <div class="flex justify-end gap-2 border-t pt-4">
+                    <button type="button" id="btnCancelProduct" class="px-4 py-2 text-sm font-semibold text-gray-500 hover:text-gray-700 smooth-transition cursor-pointer">Batal</button>
+                    <button type="submit" id="btnSaveProduct" class="px-5 py-2 bg-primary hover:bg-primarydark text-white rounded-lg text-sm font-semibold shadow-sm transform hover:-translate-y-0.5 smooth-transition cursor-pointer">Simpan Ke Database</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const salesList = [
+            "I Gede Widiarta",
+            "Komang Dika Febriana",
+            "Putu Risky Mahayana Putra",
+            "Ketut Delia Oktaviani",
+            "Ketut Sastradwi Payana",
+            "Sri Rahayu",
+            "I Gusti Ngurah Alit Triangga",
+            "Ni Putu Nia Yulianita",
+            "Luh Eka Suwantari"
+        ];
+
+        // System Constants
+        let products = [];
+        let activeBrand = 'All';
+        let isAdminMode = false;
+        let isCloudConnected = false;
+        
+        let app, db, auth, currentUser;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'badilan-grosir-db-1';
+
+        // Helper Functions
+        const getEl = (id) => document.getElementById(id);
+        const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+
+        // UI Interactions for Sales Modal
+        let pendingWaMessage = "";
+        window.openSalesModal = (message) => {
+            pendingWaMessage = message;
+            const modal = getEl('sales-modal');
+            const inner = getEl('sales-modal-inner');
+            const listContainer = getEl('sales-list');
+            
+            if(!modal || !inner || !listContainer) return;
+            
+            listContainer.innerHTML = '';
+            salesList.forEach((salesName) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left px-4 py-3 rounded-xl border border-gray-100 hover:border-primary hover:bg-green-50/50 flex justify-between items-center smooth-transition group shadow-sm cursor-pointer";
+                btn.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <span class="font-semibold text-textmain text-sm sm:text-base">${salesName}</span>
+                    </div>
+                    <span class="text-xs bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-full group-hover:bg-green-600 group-hover:text-white transition-colors">Chat <i class="fa-brands fa-whatsapp ml-1"></i></span>
+                `;
+                btn.onclick = () => {
+                    const finalMsg = `${pendingWaMessage} (Dilayani oleh Sales: *${salesName}*)`;
+                    window.open(`https://wa.me/6288987460416?text=${encodeURIComponent(finalMsg)}`, '_blank');
+                    window.closeSalesModal();
+                };
+                listContainer.appendChild(btn);
+            });
+
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                inner.classList.remove('scale-95');
+                document.body.style.overflow = 'hidden';
+            });
+        };
+
+        window.closeSalesModal = () => {
+            const modal = getEl('sales-modal');
+            const inner = getEl('sales-modal-inner');
+            if(!modal || !inner) return;
+            modal.classList.add('opacity-0');
+            inner.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        };
+
+        const generateInitialData = () => {
+            const rawData = [
+                // REALME
+                ["realme", "NOTE 80", "4/64 GB", 1999000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "NOTE 80", "4/128 GB", 2399000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C100I", "4/128 GB", 2699000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C100I", "4/256 GB", 2899000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C100I", "6/128 GB", 2999000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C100X", "6/128 GB", 3399000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C100X", "6/256 GB", 3799000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C100", "6/128 GB", 3799000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C100", "8/256 GB", 4399000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C85", "6/128 GB", 3299000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C85", "8/128 GB", 3499000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C85", "8/256 GB", 3899000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C85 5G", "8/256 GB", 3499000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C85 PRO", "8/128 GB", 3999000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "C85 PRO", "8/256 GB", 4399000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "16 5G", "8/256 GB", 5499000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "16 5G", "12/256 GB", 5999000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "16 PRO 5G", "12/256 GB", 6999000, "Smartphone", "Resmi 1 Tahun"],
+                ["realme", "16 PRO+ 5G", "12/512 GB", 8999000, "Smartphone", "Resmi 1 Tahun"],
+
+                // XIAOMI
+                ["Xiaomi", "REDMI A7 PRO", "4/64 GB", 1999000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "REDMI A7 PRO", "4/128 GB", 2199000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "REDMI 17", "4/128 GB", 2899000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "REDMI 17", "6/128 GB", 3299000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "REDMI NOTE 14 PRO 5G", "8/256 GB", 3999000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "REDMI NOTE 15 PRO 5G", "8/256 GB", 5099000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "REDMI NOTE 15 PRO 5G", "12/512 GB", 5999000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "REDMI NOTE 15 PRO+ 5G", "8/256 GB", 6399000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "REDMI NOTE 15 PRO+ 5G", "12/512 GB", 7199000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "POCO X7 PRO 5G", "12/512 GB", 6070000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "POCO X8 PRO 5G", "8/512 GB", 6370000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "POCO X8 PRO 5G", "12/512 GB", 6670000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "POCO X8 PRO MAX 5G", "12/256 GB", 7330000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "POCO X8 PRO MAX 5G", "12/512 GB", 8790000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "POCO F8 PRO", "12/512 GB", 9090000, "Smartphone", "Resmi 15 Bulan"],
+                ["Xiaomi", "17T", "12/512 GB", 9999000, "Smartphone", "Resmi 2 Tahun"],
+                ["Xiaomi", "17T PRO", "12/512 GB", 12999000, "Smartphone", "Resmi 2 Tahun"],
+                ["Xiaomi", "17", "12/256 GB", 14999000, "Smartphone", "Resmi 2 Tahun"],
+                ["Xiaomi", "17", "12/512 GB", 15999000, "Smartphone", "Resmi 2 Tahun"],
+
+                // XIAOMI TAB
+                ["Xiaomi", "REDMI PAD 2 9.7", "4/64 GB", 2649000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "REDMI PAD 2 9.7 4G", "4/64 GB", 2899000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "REDMI PAD 2 9.7 4G", "4/128 GB", 3099000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "REDMI PAD 2", "4/128 GB", 2999000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "REDMI PAD 2 4G", "4/256 GB", 3499000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "REDMI PAD 2 4G", "6/128 GB", 3499000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "PAD 2 PRO", "6/128 GB", 4499000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "PAD 2 PRO", "8/256 GB", 4999000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "PAD 8 WITH KEYBOARD", "8/256 GB", 7999000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "PAD 8 PRO WITH KEYBOARD", "8/256 GB", 9999000, "Tablet", "Resmi 1 Tahun"],
+                ["Xiaomi", "PAD 8 PRO WITH KEYBOARD+PEN", "8/256 GB", 11999000, "Tablet", "Resmi 1 Tahun"],
+
+                // TECNO
+                ["Tecno", "SPARK GO 3", "4/64 GB", 1849000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "SPARK GO 3", "4/128 GB", 1949000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "SPARK 50", "4/128 GB", 2399000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "SPARK 50", "6/128 GB", 2799000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "SPARK 50", "8/128 GB", 3299000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "POVA 8 5G", "6/128 GB", 4299000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "POVA 8 5G", "8/128 GB", 4999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "POVA 8 5G", "8/256 GB", 5599000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "CAMON 50", "8/128 GB", 3999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "CAMON 50", "8/256 GB", 4399000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "CAMON 50", "12/256 GB", 4599000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "CAMON 50 PRO 5G", "8/256 GB", 5699000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "CAMON 50 PRO 5G", "12/256 GB", 5999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Tecno", "CAMON 50 PRO 5G", "12/512 GB", 6999000, "Smartphone", "Resmi 1 Tahun"],
+                
+                // TECNO TAB
+                ["Tecno", "MEGAPAD 11 SE", "4/128 GB", 2999000, "Tablet", "Resmi 1 Tahun"],
+                ["Tecno", "MEGAPAD 11 SE", "8/256 GB", 3399000, "Tablet", "Resmi 1 Tahun"],
+                ["Tecno", "MEGAPAD 11", "8/128 GB", 2699000, "Tablet", "Resmi 1 Tahun"],
+                ["Tecno", "MEGAPAD 11", "8/256 GB", 2899000, "Tablet", "Resmi 1 Tahun"],
+
+                // INFINIX
+                ["Infinix", "SMART 20", "4/64 GB", 1849000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "SMART 20", "4/128 GB", 1999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "HOT 70", "4/128 GB", 2599000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "HOT 70", "8/128 GB", 3199000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "HOT 70", "6/256 GB", 3399000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "NOTE EDGE 5G", "8/256 GB", 4399000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "NOTE 60", "8/256 GB", 4699000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "NOTE 60 PRO", "8/256 GB", 5999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "NOTE 60 PRO", "12/256 GB", 6999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "GT 50 PRO", "12/256 GB", 6999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Infinix", "GT 50 PRO", "12/512 GB", 7999000, "Smartphone", "Resmi 1 Tahun"],
+
+                // INFINIX TAB
+                ["Infinix", "XPAD 30E", "4/128 GB", 2699000, "Tablet", "Resmi 1 Tahun"],
+                ["Infinix", "XPAD 20", "8/256 GB", 2699000, "Tablet", "Resmi 1 Tahun"],
+                ["Infinix", "XPAD 20 PRO", "8/256 GB", 4199000, "Tablet", "Resmi 1 Tahun"],
+                ["Infinix", "XPAD EDGE", "8/256 GB", 4599000, "Tablet", "Resmi 1 Tahun"],
+
+                // VIVO
+                ["vivo", "Y05E", "4/64 GB", 2099000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y05", "4/64 GB", 2299000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y05", "4/128 GB", 2599000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y11D", "4/64 GB", 2399000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y11D", "4/128 GB", 2799000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y11D", "6/128 GB", 3599000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y31D", "4/128 GB", 3599000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y31D PRO", "4/128 GB", 3899000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y31D PRO", "6/128 GB", 4299000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y31D PRO", "8/128 GB", 4899000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y31D PRO", "8/256 GB", 5499000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y500", "6/128 GB", 5499000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "Y500", "6/256 GB", 6299000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "IQOO Z11 5G", "8/256 GB", 6899000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "V60 LITE 4G", "8/256 GB", 5299000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "V70 FE", "8/256 GB", 6999000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "V70 FE", "12/256 GB", 7999000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "V70", "8/256 GB", 9999000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "V70", "12/512 GB", 10999000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "X300", "12/256 GB", 14999000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "X300", "16/512 GB", 16999000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "X300 PRO", "16/512 GB", 18999000, "Smartphone", "Resmi 1 Tahun"],
+                ["vivo", "X300 ULTRA", "16/512 GB", 25999000, "Smartphone", "Resmi 1 Tahun"],
+
+                // IPHONE & IPAD
+                ["iPhone", "IPHONE 15", "128 GB", 12999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 15", "256 GB", 15249000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 16", "128 GB", 15499000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 16", "256 GB", 16999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 16", "512 GB", 20999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 16 PLUS", "128 GB", 16499000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 16 PLUS", "256 GB", 18499000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 16 PLUS", "512 GB", 22999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 16 PRO MAX", "512 GB", 24499000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE AIR", "256 GB", 16999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE AIR", "512 GB", 21749000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE AIR", "1 TB", 25999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17E", "256 GB", 13499000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17", "256 GB", 17999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17", "512 GB", 22749000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17 PRO", "256 GB", 22999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17 PRO", "512 GB", 27499000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17 PRO", "1 TB", 32249000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17 PRO MAX", "256 GB", 24999000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17 PRO MAX", "512 GB", 29499000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17 PRO MAX", "1 TB", 34249000, "Smartphone", "iBox Resmi"],
+                ["iPhone", "IPHONE 17 PRO MAX", "2 TB", 43249000, "Smartphone", "iBox Resmi"],
+
+                ["iPad", "IPHONE IPAD 11 GEN WIFI", "128 GB", 8999000, "Tablet", "iBox Resmi"],
+                ["iPad", "IPHONE IPAD 11 GEN WIFI", "256 GB", 10999000, "Tablet", "iBox Resmi"],
+                ["iPad", "IPHONE IPAD MINI 7 WIFI", "128 GB", 11249000, "Tablet", "iBox Resmi"],
+                ["iPad", "IPHONE IPAD AIR 7 11 INCH 5TH M3", "128 GB", 13249000, "Tablet", "iBox Resmi"],
+                ["iPad", "IPHONE IPAD AIR 7 11 INCH 5TH M3", "256 GB", 15499000, "Tablet", "iBox Resmi"],
+                ["iPad", "IPHONE IPAD AIR 11 INCH 6TH GEN", "256 GB", 17149000, "Tablet", "iBox Resmi"],
+                ["iPad", "IPHONE IPAD AIR 13 (M4) WIFI", "128 GB", 16149000, "Tablet", "iBox Resmi"],
+                ["iPad", "IPHONE IPAD 11 CELL", "256 GB", 20149000, "Tablet", "iBox Resmi"],
+
+                // SAMSUNG
+                ["Samsung", "GALAXY A07", "4/64 GB", 2199000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A07", "4/128 GB", 2599000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A07", "6/128 GB", 2999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A07 5G", "6/128 GB", 3199000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A17 4G", "4/128 GB", 3399000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A17 4G", "8/128 GB", 3999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A17 4G", "8/256 GB", 4499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A17 5G", "8/256 GB", 4999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A56 5G", "12/256 GB", 7299000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A27 5G", "6/128 GB", 5299000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A27 5G", "8/256 GB", 6299000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A37 5G", "8/128 GB", 6599000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A37 5G", "8/256 GB", 7299000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A57 5G", "8/128 GB", 7599000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A57 5G", "8/256 GB", 8299000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY A57 5G", "12/256 GB", 8999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S25 FE", "8/256 GB", 11999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S25 FE", "8/512 GB", 13499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S25", "12/256 GB", 13999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S25", "12/512 GB", 15999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S25 ULTRA", "12/256 GB", 20999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S25 ULTRA", "12/512 GB", 22999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S26", "12/256 GB", 16499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S26", "12/512 GB", 19499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S26+", "12/256 GB", 19499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S26+", "12/512 GB", 22499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S26 ULTRA", "12/256 GB", 24499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S26 ULTRA", "12/512 GB", 27499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY S26 ULTRA", "16 GB/1 TB", 31999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY Z FOLD 6", "12/512 GB", 28499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY Z FLIP 7", "12/256 GB", 17999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY Z FLIP 7", "12/512 GB", 19999000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY Z FOLD 7", "12/512 GB", 31499000, "Smartphone", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY Z FOLD 7", "16 GB/1 TB", 34999000, "Smartphone", "Resmi 1 Tahun"],
+
+                // SAMSUNG TAB
+                ["Samsung", "TAB A11 WIFI", "4/64 GB", 2699000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "TAB A11 LTE", "4/64 GB", 3499000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "TAB A11+ WIFI", "6/128 GB", 4499000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "TAB A11+ LTE", "6/128 GB", 5999000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY TAB S10 LITE WIFI", "6/128 GB", 6499000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY TAB S10 LITE 5G", "6/128 GB", 7999000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY TAB S10 FE 5G", "8/128 GB", 11499000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY TAB S10 ULTRA 5G + KEYBOARD", "12/256 GB", 22999000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY TAB S11 5G", "12/256 GB", 21999000, "Tablet", "Resmi 1 Tahun"],
+                ["Samsung", "GALAXY TAB S11 ULTRA", "12/256 GB", 27999000, "Tablet", "Resmi 1 Tahun"],
+
+                // OPPO
+                ["OPPO", "A6C", "4/64 GB", 2699000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "A6C", "4/128 GB", 3099000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "A6X", "4/128 GB", 2899000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "A6X", "6/128 GB", 3399000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "A6X", "6/256 GB", 3999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "A6", "6/128 GB", 3999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "A6", "6/256 GB", 4299000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "A6S", "8/128 GB", 4999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "A6S", "8/256 GB", 5499000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 13 5G", "12/256 GB", 8999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 15F 5G", "8/128 GB", 6599000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 15F 5G", "8/256 GB", 7199000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 15F 5G", "12/256 GB", 7899000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 15 5G", "8/256 GB", 9299000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 15 5G", "12/256 GB", 9999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 16F", "8/128 GB", 7999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 16F", "8/256 GB", 8699000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "RENO 16 5G", "8/256 GB", 11999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "FIND X9", "12/256 GB", 15999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "FIND X9S", "12/256 GB", 15999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "FIND X9 PRO", "16/512 GB", 20999000, "Smartphone", "Resmi 1 Tahun"],
+                ["OPPO", "FIND X9 ULTRA", "12/256 GB", 27999000, "Smartphone", "Resmi 1 Tahun"],
+
+                // OPPO TAB
+                ["OPPO", "PAD SE", "4/128 GB", 3599000, "Tablet", "Resmi 1 Tahun"]
+            ];
+
+            return rawData.map((item, index) => ({
+                id: 'prod_' + index,
+                brand: item[0],
+                name: item[1],
+                variant: item[2],
+                price: item[3],
+                category: item[4],
+                warranty: item[5],
+                promoPrice: null,
+                stock: 'Tersedia',
+                image: '',
+                createdAt: Date.now() + index
+            }));
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const setupBrandFilters = () => {
+                const brandQuickFilters = getEl('brand-quick-filters');
+                if (!brandQuickFilters) return;
+                
+                const defaultBrands = ["All", "Samsung", "iPhone", "iPad", "Xiaomi", "OPPO", "vivo", "realme", "Infinix", "Tecno"];
+                const existingProductBrands = products.map(p => p.brand).filter(Boolean);
+                const currentBrands = [...new Set([...defaultBrands, ...existingProductBrands])];
+
+                brandQuickFilters.innerHTML = '';
+                currentBrands.forEach(brand => {
+                    const btn = document.createElement('button');
+                    const isAll = brand === 'All';
+                    btn.className = `flex-shrink-0 px-5 py-2 rounded-full text-sm font-semibold border smooth-transition shadow-sm hover:shadow transform hover:-translate-y-0.5 cursor-pointer ${
+                        activeBrand === brand 
+                        ? 'bg-primary border-primary text-white' 
+                        : 'bg-white border-gray-200 text-textmain hover:border-primary hover:text-primary'
+                    }`;
+                    btn.innerText = isAll ? 'Semua Brand' : brand;
+                    btn.onclick = () => {
+                        activeBrand = brand;
+                        setupBrandFilters(); 
+                        applyFilters();
+                    };
+                    brandQuickFilters.appendChild(btn);
+                });
+            };
+
+            const renderProducts = (data) => {
+                const container = getEl('product-container');
+                const emptyState = getEl('empty-state');
+                const loadingState = getEl('loading-indicator');
+                
+                if(!container || !emptyState || !loadingState) return;
+                
+                loadingState.classList.add('hidden');
+                container.innerHTML = '';
+
+                if (data.length === 0) {
+                    container.classList.add('hidden');
+                    emptyState.classList.remove('hidden');
+                    return;
+                } else {
+                    emptyState.classList.add('hidden');
+                    container.classList.remove('hidden');
+                    container.classList.add('flex');
+                }
+
+                data.forEach((product, index) => {
+                    const isPromo = product.promoPrice !== null && product.promoPrice > 0;
+                    const activePrice = isPromo ? product.promoPrice : product.price;
+                    const waMessage = `Halo Badilan Grosir, saya mau pesan ${product.name} ${product.variant} dengan harga ${formatRp(activePrice)}.`;
+                    const statusColor = product.stock === 'Tersedia' ? 'bg-green-100 text-green-700' : product.stock === 'Terbatas' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700';
+                    
+                    const discountPercent = isPromo ? Math.round(((product.price - product.promoPrice) / product.price) * 100) : 0;
+                    const savedNominal = isPromo ? product.price - product.promoPrice : 0;
+                    
+                    const hasValidImage = product.image && product.image.trim() !== '' && !product.image.includes('placehol');
+
+                    const listCard = document.createElement('div');
+                    listCard.className = "bg-white rounded-xl border border-gray-200 p-2.5 sm:p-3 shadow-sm hover:shadow-md smooth-transition cursor-pointer flex items-center gap-3 relative animate-fade-up";
+                    listCard.style.animationDelay = `${(index % 15) * 0.03}s`;
+                    listCard.onclick = (e) => { if(!e.target.closest('button')) showProductDetail(product.id); };
+                    
+                    listCard.innerHTML = `
+                        <!-- Gambar / Badge Brand Kiri -->
+                        <div class="w-[76px] h-[76px] sm:w-[84px] sm:h-[84px] flex-shrink-0 rounded-lg overflow-hidden relative border border-gray-100 bg-primary flex flex-col justify-center items-center">
+                            ${isPromo ? `<div class="absolute top-0 left-0 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-br-lg z-10 shadow-sm">-${discountPercent}%</div>` : ''}
+                            ${hasValidImage ? `
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                            ` : `
+                                <span class="text-white font-bold text-xs z-10 drop-shadow-md text-center px-1">${product.brand}</span>
+                            `}
+                        </div>
+                        
+                        <!-- Konten Kanan -->
+                        <div class="flex-grow flex items-center justify-between min-w-0 gap-2">
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center gap-2 mb-0.5">
+                                    <h3 class="text-xs sm:text-sm font-bold text-textmain truncate">${product.name}</h3>
+                                    <span class="flex-shrink-0 px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-semibold ${statusColor}">${product.stock}</span>
+                                </div>
+                                <p class="text-[11px] sm:text-xs text-gray-500 mb-1 truncate">${product.variant} ${product.warranty && product.warranty !== '-' ? `• Garansi ${product.warranty}` : ''}</p>
+                                
+                                <div class="flex items-baseline gap-2 flex-wrap">
+                                    ${isPromo ? `
+                                        <span class="text-[10px] sm:text-xs text-gray-400 line-through">${formatRp(product.price)}</span>
+                                        <span class="text-[9px] sm:text-[10px] bg-red-50 text-red-500 px-1.5 py-0.2 rounded font-semibold border border-red-100 whitespace-nowrap">Hemat ${formatRp(savedNominal)}</span>
+                                        <span class="text-sm sm:text-base font-extrabold text-primary">${formatRp(product.promoPrice)}</span>
+                                    ` : `
+                                        <span class="text-sm sm:text-base font-extrabold text-primary">${formatRp(product.price)}</span>
+                                    `}
+                                </div>
+                            </div>
+                            
+                            <button onclick="event.stopPropagation(); openSalesModal('${waMessage}');" class="flex-shrink-0 bg-primary hover:bg-primarydark text-white px-3 sm:px-4 py-2 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold smooth-transition shadow-sm cursor-pointer">
+                                <i class="fa-brands fa-whatsapp mr-1.5 text-sm sm:text-base"></i>Beli
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(listCard);
+                });
+            };
+
+            const applyFilters = () => {
+                const searchEl = getEl('searchInput');
+                const catEl = getEl('filterCategory');
+                const sortEl = getEl('sortOrder');
+                
+                const search = searchEl ? searchEl.value.toLowerCase() : '';
+                const cat = catEl ? catEl.value : 'All';
+                const sort = sortEl ? sortEl.value : 'terbaru';
+                
+                let filtered = products.filter(p => {
+                    const matchSearch = p.name.toLowerCase().includes(search) || p.brand.toLowerCase().includes(search);
+                    const matchBrand = activeBrand === 'All' ? true : p.brand === activeBrand;
+                    const matchCat = cat === 'All' ? true : (p.category || 'Smartphone') === cat;
+                    return matchSearch && matchBrand && matchCat;
+                });
+
+                if(sort === 'termurah') {
+                    filtered.sort((a,b) => (a.promoPrice || a.price) - (b.promoPrice || b.price));
+                } else if(sort === 'termahal') {
+                    filtered.sort((a,b) => (b.promoPrice || b.price) - (a.promoPrice || a.price));
+                } else {
+                    filtered.sort((a,b) => (b.createdAt || 0) - (a.createdAt || 0));
+                }
+                renderProducts(filtered);
+            };
+
+            const showProductDetail = (id) => {
+                const product = products.find(p => p.id === id);
+                if(!product) return;
+                const modal = getEl('product-modal');
+                const inner = getEl('product-modal-inner');
+                const content = getEl('modal-content');
+                if(!modal || !content || !inner) return;
+
+                const isPromo = product.promoPrice !== null && product.promoPrice > 0;
+                const activePrice = isPromo ? product.promoPrice : product.price;
+                const waMessage = `Halo Badilan Grosir, saya mau pesan ${product.name} ${product.variant} dengan harga ${formatRp(activePrice)}.`;
+                const statusColor = product.stock === 'Tersedia' ? 'bg-green-100 text-green-700' : product.stock === 'Terbatas' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700';
+                
+                const discountPercent = isPromo ? Math.round(((product.price - product.promoPrice) / product.price) * 100) : 0;
+                const savedNominal = isPromo ? product.price - product.promoPrice : 0;
+                const hasValidImage = product.image && product.image.trim() !== '' && !product.image.includes('placehol');
+
+                content.innerHTML = `
+                    <div class="w-full md:w-1/2 bg-surface flex items-center justify-center p-6 sm:p-8 relative overflow-hidden min-h-[200px]">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent"></div>
+                        ${isPromo ? `<div class="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 bg-red-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded shadow-sm">-${discountPercent}%</div>` : ''}
+                        ${hasValidImage ? `
+                            <img src="${product.image}" alt="${product.name}" class="w-auto max-w-full h-auto max-h-[220px] object-contain drop-shadow-xl relative z-10 rounded-lg">
+                        ` : `
+                            <div class="text-primary font-extrabold text-2xl tracking-wider relative z-10">${product.brand}</div>
+                        `}
+                    </div>
+                    <div class="w-full md:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col">
+                        <div class="mb-4">
+                            <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">${product.brand} ${product.category ? '• ' + product.category : ''}</p>
+                            <h2 class="text-xl sm:text-2xl font-extrabold text-textmain leading-tight mb-2">${product.name}</h2>
+                            <span class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold ${statusColor}">Stok: ${product.stock}</span>
+                        </div>
+                        
+                        <div class="bg-surface rounded-xl p-3 sm:p-4 mb-5 border border-gray-100 shadow-inner">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fa-solid fa-microchip text-gray-400 w-4 text-center text-xs"></i>
+                                <span class="text-xs sm:text-sm text-textmain font-medium">Varian: <span class="font-bold">${product.variant}</span></span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-shield-halved text-gray-400 w-4 text-center text-xs"></i>
+                                <span class="text-xs sm:text-sm text-textmain font-medium">${product.warranty && product.warranty !== '-' ? 'Garansi ' + product.warranty : 'Garansi Toko'}</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 mt-auto">
+                            <p class="text-xs text-textlight mb-1">Harga Pembelian:</p>
+                            ${isPromo ? `
+                                <div class="flex items-center gap-2 mb-1 flex-wrap">
+                                    <p class="text-sm text-gray-400 line-through">${formatRp(product.price)}</p>
+                                    <span class="bg-red-50 border border-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-bold">Hemat ${formatRp(savedNominal)}</span>
+                                </div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-primary">${formatRp(product.promoPrice)}</p>
+                            ` : `
+                                <p class="text-2xl sm:text-3xl font-extrabold text-textmain">${formatRp(product.price)}</p>
+                            `}
+                        </div>
+
+                        <button onclick="openSalesModal('${waMessage}')" class="w-full bg-primary hover:bg-primarydark text-white text-center py-3.5 rounded-xl font-bold shadow-md hover:shadow-lg smooth-transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer">
+                            <i class="fa-brands fa-whatsapp text-lg sm:text-xl"></i> Beli via WhatsApp
+                        </button>
+                    </div>
+                `;
+                
+                modal.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    modal.classList.remove('opacity-0');
+                    inner.classList.remove('scale-95');
+                    document.body.style.overflow = 'hidden';
+                });
+            };
+
+            const closeModal = (modalId, innerId) => {
+                const modal = getEl(modalId);
+                const inner = getEl(innerId);
+                if(!modal || !inner) return;
+                modal.classList.add('opacity-0');
+                inner.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            };
+
+            getEl('btnCloseModal')?.addEventListener('click', () => closeModal('product-modal', 'product-modal-inner'));
+            
+            getEl('btnOpenLogin')?.addEventListener('click', () => {
+                const modal = getEl('admin-login-modal');
+                const inner = getEl('admin-login-inner');
+                modal?.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    modal?.classList.remove('opacity-0');
+                    inner?.classList.remove('scale-95');
+                });
+            });
+            getEl('btnCancelLogin')?.addEventListener('click', () => closeModal('admin-login-modal', 'admin-login-inner'));
+            
+            getEl('btnLogin')?.addEventListener('click', () => {
+                const pwd = getEl('adminPassword')?.value;
+                const err = getEl('loginError');
+                if (pwd === 'Qwerty12') {
+                    isAdminMode = true;
+                    if(err) err.classList.add('hidden');
+                    closeModal('admin-login-modal', 'admin-login-inner');
+                    getEl('store-view')?.classList.add('hidden');
+                    getEl('admin-panel')?.classList.remove('hidden');
+                    if (isCloudConnected) getEl('cloudStatus')?.classList.remove('hidden');
+                    renderAdminTable();
+                    if(getEl('adminPassword')) getEl('adminPassword').value = '';
+                } else {
+                    if(err) err.classList.remove('hidden');
+                }
+            });
+
+            getEl('adminPassword')?.addEventListener('keyup', (e) => {
+                if(e.key === 'Enter') getEl('btnLogin')?.click();
+            });
+
+            getEl('btnLogoutAdmin')?.addEventListener('click', () => {
+                isAdminMode = false;
+                getEl('admin-panel')?.classList.add('hidden');
+                getEl('store-view')?.classList.remove('hidden');
+            });
+
+            getEl('btnOpenAdminModal')?.addEventListener('click', () => {
+                getEl('adminProductForm')?.reset();
+                if(getEl('adminProductId')) getEl('adminProductId').value = '';
+                if(getEl('adminModalTitle')) getEl('adminModalTitle').innerText = 'Tambah Produk';
+                
+                const modal = getEl('admin-product-modal');
+                const inner = getEl('admin-product-inner');
+                modal?.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    modal?.classList.remove('opacity-0');
+                    inner?.classList.remove('scale-95');
+                });
+            });
+
+            getEl('btnCancelProduct')?.addEventListener('click', () => closeModal('admin-product-modal', 'admin-product-inner'));
+
+            getEl('searchInput')?.addEventListener('input', applyFilters);
+            getEl('filterCategory')?.addEventListener('change', applyFilters);
+            getEl('sortOrder')?.addEventListener('change', applyFilters);
+
+            getEl('mobileMenuBtn')?.addEventListener('click', () => {
+                const menu = getEl('mobileMenu');
+                if(!menu) return;
+                if(menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    menu.style.maxHeight = '0px';
+                    menu.style.opacity = '0';
+                    requestAnimationFrame(() => {
+                        menu.style.maxHeight = '300px';
+                        menu.style.opacity = '1';
+                    });
+                } else {
+                    menu.style.maxHeight = '0px';
+                    menu.style.opacity = '0';
+                    setTimeout(() => menu.classList.add('hidden'), 300);
+                }
+            });
+
+            const renderAdminTable = () => {
+                const tbody = getEl('adminTableBody');
+                if (!tbody) return;
+                tbody.innerHTML = '';
+                products.forEach(p => {
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-gray-50 transition-colors group border-b border-gray-100";
+                    const hasImg = p.image && p.image.trim() !== '' && !p.image.includes('placehol');
+                    tr.innerHTML = `
+                        <td class="p-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded bg-surface flex items-center justify-center overflow-hidden flex-shrink-0 border">
+                                    ${hasImg ? `<img src="${p.image}" class="w-full h-full object-cover" onerror="this.style.display='none'">` : `<span class="text-[10px] font-bold text-primary">${p.brand}</span>`}
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-textmain">${p.name}</p>
+                                    <p class="text-xs text-textlight">${p.brand} <span class="font-semibold text-primary">• ${p.category || 'Smartphone'}</span> • ${p.variant}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p-4 font-medium">
+                            ${formatRp(p.price)}
+                            ${p.promoPrice ? `<br><span class="text-xs text-red-500 font-bold">Promo: ${formatRp(p.promoPrice)}</span>` : ''}
+                            ${p.warranty && p.warranty !== '-' ? `<br><span class="text-[10px] text-gray-400 font-normal">Garansi: ${p.warranty}</span>` : ''}
+                        </td>
+                        <td class="p-4">
+                            <span class="px-2 py-1 rounded text-xs font-semibold ${p.stock === 'Tersedia' ? 'bg-green-100 text-green-700' : p.stock === 'Terbatas' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}">${p.stock}</span>
+                        </td>
+                        <td class="p-4 text-right flex justify-end">
+                            <button class="btn-edit text-primary hover:text-primarydark mr-3 smooth-transition transform hover:scale-110 cursor-pointer p-2" data-id="${p.id}"><i class="fa-solid fa-pen"></i></button>
+                            <button class="btn-delete text-red-500 hover:text-red-700 smooth-transition transform hover:scale-110 cursor-pointer p-2" data-id="${p.id}"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                document.querySelectorAll('.btn-edit').forEach(btn => {
+                    btn.addEventListener('click', (e) => editProduct(e.currentTarget.dataset.id));
+                });
+                document.querySelectorAll('.btn-delete').forEach(btn => {
+                    btn.addEventListener('click', (e) => deleteProduct(e.currentTarget.dataset.id));
+                });
+            };
+
+            const editProduct = (id) => {
+                const p = products.find(x => x.id === id);
+                if(!p) return;
+                
+                if(getEl('adminProductId')) getEl('adminProductId').value = p.id;
+                if(getEl('adminBrand')) getEl('adminBrand').value = p.brand;
+                if(getEl('adminCategory')) getEl('adminCategory').value = p.category || 'Smartphone';
+                if(getEl('adminName')) getEl('adminName').value = p.name;
+                if(getEl('adminVariant')) getEl('adminVariant').value = p.variant;
+                if(getEl('adminWarranty')) getEl('adminWarranty').value = p.warranty || '';
+                if(getEl('adminPrice')) getEl('adminPrice').value = p.price;
+                if(getEl('adminPromo')) getEl('adminPromo').value = p.promoPrice || '';
+                if(getEl('adminStock')) getEl('adminStock').value = p.stock;
+                if(getEl('adminImage')) getEl('adminImage').value = (p.image && !p.image.includes('placehol')) ? p.image : '';
+                if(getEl('adminModalTitle')) getEl('adminModalTitle').innerText = 'Edit Produk';
+                
+                const modal = getEl('admin-product-modal');
+                const inner = getEl('admin-product-inner');
+                modal?.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    modal?.classList.remove('opacity-0');
+                    inner?.classList.remove('scale-95');
+                });
+            };
+
+            // Setup Cloud Storage Data
+            const setupCloudStorage = async () => {
+                try {
+                    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+                    if(firebaseConfig) {
+                        app = initializeApp(firebaseConfig);
+                        db = getFirestore(app);
+                        auth = getAuth(app);
+                        
+                        let tokenToUse = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                        if(tokenToUse) {
+                            await signInWithCustomToken(auth, tokenToUse);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                        currentUser = auth.currentUser;
+                        
+                        if(currentUser) {
+                            isCloudConnected = true;
+                            const collRef = collection(db, 'artifacts', appId, 'public', 'data', 'products_v8');
+                            
+                            onSnapshot(collRef, (snapshot) => {
+                                if (snapshot.empty && !window.hasSeededFirebaseV8) {
+                                    window.hasSeededFirebaseV8 = true;
+                                    const initialProducts = generateInitialData();
+                                    initialProducts.forEach(async (p) => {
+                                        await setDoc(doc(collRef, p.id), p);
+                                    });
+                                } else if (!snapshot.empty) {
+                                    window.hasSeededFirebaseV8 = true;
+                                    products = [];
+                                    snapshot.forEach(doc => {
+                                        products.push({ id: doc.id, ...doc.data() });
+                                    });
+                                    products.sort((a,b) => (a.createdAt || 0) - (b.createdAt || 0)); // Sort old to new to keep original order
+                                    
+                                    setupBrandFilters();
+                                    applyFilters();
+                                    if (isAdminMode) renderAdminTable();
+                                }
+                            }, (error) => {
+                                console.error("Cloud DB Listen Error:", error);
+                                enableFallbackMode();
+                            });
+                        } else {
+                            enableFallbackMode();
+                        }
+                    } else {
+                        enableFallbackMode();
+                    }
+                } catch(e) {
+                    console.warn("Could not connect to Cloud DB. Falling back to local storage.", e);
+                    enableFallbackMode();
+                }
+            };
+
+            const enableFallbackMode = () => {
+                isCloudConnected = false;
+                const localData = localStorage.getItem('badilan_products_v8');
+                if (localData) {
+                    products = JSON.parse(localData);
+                } else {
+                    products = generateInitialData();
+                    localStorage.setItem('badilan_products_v8', JSON.stringify(products));
+                }
+                setupBrandFilters();
+                applyFilters();
+                if (isAdminMode) renderAdminTable();
+            };
+
+            const deleteProduct = async (id) => {
+                const p = products.find(x => x.id === id);
+                if(!p) return;
+                
+                const modalHTML = document.createElement('div');
+                modalHTML.className = "fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300";
+                modalHTML.innerHTML = `
+                    <div class="bg-white p-6 rounded-2xl w-full max-w-sm shadow-xl text-center transform scale-95 transition-transform duration-300">
+                        <div class="w-16 h-16 bg-red-100 text-red-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-4"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <h3 class="text-xl font-bold text-textmain mb-2">Hapus Produk?</h3>
+                        <p class="text-sm text-textlight mb-6">Anda yakin ingin menghapus <b>${p.name}</b>?</p>
+                        <div class="flex justify-center gap-3">
+                            <button id="cancelDelBtn" class="px-5 py-2.5 text-sm font-semibold text-gray-500 bg-gray-100 rounded-lg hover:bg-gray-200 smooth-transition cursor-pointer">Batal</button>
+                            <button id="confirmDelBtn" class="px-5 py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-semibold shadow-sm transform hover:-translate-y-0.5 smooth-transition cursor-pointer">Ya, Hapus</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modalHTML);
+                
+                requestAnimationFrame(() => {
+                    modalHTML.classList.remove('opacity-0');
+                    modalHTML.firstElementChild.classList.remove('scale-95');
+                });
+                
+                getEl('cancelDelBtn').onclick = () => {
+                    modalHTML.classList.add('opacity-0');
+                    modalHTML.firstElementChild.classList.add('scale-95');
+                    setTimeout(() => modalHTML.remove(), 300);
+                };
+
+                getEl('confirmDelBtn').onclick = async () => {
+                    modalHTML.remove();
+                    if (isCloudConnected && currentUser && db) {
+                        try {
+                            await deleteDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'products_v8'), id));
+                        } catch(e) { console.error("Error deleting from cloud", e); }
+                    } else {
+                        products = products.filter(x => x.id !== id);
+                        localStorage.setItem('badilan_products_v8', JSON.stringify(products));
+                        setupBrandFilters();
+                        renderAdminTable();
+                        applyFilters();
+                    }
+                };
+            };
+
+            getEl('adminProductForm')?.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = getEl('btnSaveProduct');
+                if(btn) btn.innerText = 'Menyimpan...';
+
+                const priceVal = parseInt(getEl('adminPrice')?.value) || 0;
+                const promoVal = parseInt(getEl('adminPromo')?.value) || null;
+                const rawImg = getEl('adminImage')?.value.trim() || '';
+                
+                const newProduct = {
+                    brand: getEl('adminBrand')?.value.trim(),
+                    category: getEl('adminCategory')?.value,
+                    name: getEl('adminName')?.value.trim(),
+                    variant: getEl('adminVariant')?.value.trim(),
+                    warranty: getEl('adminWarranty')?.value.trim() || '-',
+                    price: priceVal,
+                    promoPrice: promoVal,
+                    stock: getEl('adminStock')?.value,
+                    image: rawImg,
+                    createdAt: Date.now()
+                };
+
+                const existingId = getEl('adminProductId')?.value;
+
+                try {
+                    if (isCloudConnected && currentUser && db) {
+                        const collRef = collection(db, 'artifacts', appId, 'public', 'data', 'products_v8');
+                        if (existingId) {
+                            newProduct.id = existingId;
+                            const idx = products.findIndex(p => p.id === existingId);
+                            if(idx > -1 && !newProduct.image) newProduct.image = products[idx].image || '';
+                            await setDoc(doc(collRef, existingId), newProduct, { merge: true });
+                        } else {
+                            newProduct.id = 'prod_' + Date.now();
+                            await setDoc(doc(collRef, newProduct.id), newProduct);
+                        }
+                    } else {
+                        if (existingId) {
+                            newProduct.id = existingId;
+                            const idx = products.findIndex(p => p.id === existingId);
+                            if(idx > -1) {
+                                if(!newProduct.image) newProduct.image = products[idx].image || '';
+                                products[idx] = newProduct;
+                            }
+                        } else {
+                            newProduct.id = 'prod_' + Date.now();
+                            products.unshift(newProduct);
+                        }
+                        localStorage.setItem('badilan_products_v8', JSON.stringify(products));
+                        setupBrandFilters();
+                        renderAdminTable();
+                        applyFilters();
+                    }
+                    closeModal('admin-product-modal', 'admin-product-inner');
+                } catch(err) {
+                    console.error("Gagal menyimpan:", err);
+                    alert("Gagal menyimpan data.");
+                } finally {
+                    if(btn) btn.innerText = 'Simpan Ke Database';
+                }
+            });
+
+            // Initialize App
+            setupCloudStorage();
+            
+            window.addEventListener('scroll', () => {
+                const nav = getEl('main-nav');
+                if(!nav) return;
+                if (window.scrollY > 10) {
+                    nav.classList.add('shadow-md');
+                    nav.classList.remove('shadow-sm');
+                } else {
+                    nav.classList.add('shadow-sm');
+                    nav.classList.remove('shadow-md');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
